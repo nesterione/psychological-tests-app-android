@@ -15,7 +15,17 @@
         android:layout_height="fill_parent"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тест Айзенка"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            android:textSize="40dp" />
 
         <Button
             android:layout_width="240dp"
@@ -27,14 +37,14 @@
         <Button
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:text="Темпераменты"
             android:id="@+id/btn_show_info"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="Темпераменты" />
 
         <Button
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:text="Описание теста"
+            android:text="О тесте"
             android:id="@+id/btn_about_test"
             android:layout_gravity="center_horizontal" />
 
@@ -45,4 +55,5 @@
             android:id="@+id/btn_exit"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
+
 </RelativeLayout>

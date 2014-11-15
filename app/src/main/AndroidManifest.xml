@@ -32,6 +32,10 @@
             android:name=".InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
+        <activity
+            android:name=".PreTestActivity"
+            android:label="@string/title_activity_pre_test" >
+        </activity>
     </application>
 
 </manifest>

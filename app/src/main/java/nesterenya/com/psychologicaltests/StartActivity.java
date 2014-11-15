@@ -1,15 +1,55 @@
 package nesterenya.com.psychologicaltests;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class StartActivity extends Activity {
+
+    private void showDialog(Context context, DialogInterface.OnClickListener yesListener, DialogInterface.OnClickListener noListener, DialogInterface.OnCancelListener cancelListener ) {
+        AlertDialog.Builder ad;
+        ad = new AlertDialog.Builder(StartActivity.this);
+        ad.setTitle("Выход");
+        ad.setMessage("Вы хотите выйти?");
+        ad.setPositiveButton("Да", yesListener);
+        ad.setNegativeButton("Нет", noListener);
+        ad.setCancelable(true);
+        ad.setOnCancelListener(cancelListener);
+        ad.show();
+    }
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+             DialogInterface.OnClickListener yesL = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int arg1) {
+                    finish();
+                }
+             };
+
+            DialogInterface.OnClickListener noL = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int arg1) {
+                }
+            };
+
+            DialogInterface.OnCancelListener cancelL = new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                }
+            };
+           showDialog(StartActivity.this,yesL,noL,cancelL);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +57,7 @@ public class StartActivity extends Activity {
         setContentView(R.layout.activity_start);
 
         Button btnExit = (Button)findViewById(R.id.btn_exit);
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        btnExit.setOnClickListener(exitListener);
 
         Button btnAboutTest = (Button)findViewById(R.id.btn_about_test);
 
@@ -37,7 +72,7 @@ public class StartActivity extends Activity {
         btnBeginTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartActivity.this, TestActivity.class));
+                startActivity(new Intent(StartActivity.this, PreTestActivity.class));
             }
         });
 
@@ -48,7 +83,6 @@ public class StartActivity extends Activity {
                 startActivity(new Intent(StartActivity.this, TempersActivity.class));
             }
         });
-
     }
 
 
