@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Тест Айзенка"
-            android:id="@+id/textView2"
+            android:id="@+id/tv_result_extra"
             android:layout_gravity="center_horizontal"
             android:textSize="40dp" />
 
@@ -53,6 +53,13 @@
             android:layout_height="wrap_content"
             android:text="Выход"
             android:id="@+id/btn_exit"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/btn_more_info"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 

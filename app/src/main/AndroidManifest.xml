@@ -36,6 +36,10 @@
             android:name=".PreTestActivity"
             android:label="@string/title_activity_pre_test" >
         </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

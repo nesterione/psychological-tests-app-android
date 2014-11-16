@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 public class StartActivity extends Activity {
@@ -55,6 +54,21 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        Button bbb = (Button)findViewById(R.id.btn_more_info);
+        bbb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, ResultActivity.class);
+
+                intent.putExtra("extra", 2);
+                intent.putExtra("emotion",20);
+                intent.putExtra("lie",2);
+
+                startActivity(intent);
+            }
+        });
+
 
         Button btnExit = (Button)findViewById(R.id.btn_exit);
         btnExit.setOnClickListener(exitListener);

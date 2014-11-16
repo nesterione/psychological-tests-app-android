@@ -9,5 +9,6 @@
     <string name="title_activity_tempers">TempersActivity</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="title_activity_pre_test">PreTestActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
 
 </resources>
