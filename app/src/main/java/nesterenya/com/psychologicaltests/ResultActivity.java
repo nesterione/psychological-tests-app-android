@@ -35,7 +35,7 @@ public class ResultActivity extends Activity {
         int emotion = getIntent().getIntExtra("emotion",-1);
         int lie = getIntent().getIntExtra("lie",-1);
 
-        if(extra>0&&emotion>0&&lie>0) {
+        if(extra>=0&&emotion>=0&&lie>=0) {
             String youAre = "";
 
             if(extra>12) {

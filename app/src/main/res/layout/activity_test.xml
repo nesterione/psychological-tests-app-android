@@ -12,7 +12,8 @@
         android:text="Отвечайте на ворпроссы:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_result_extra" />
+        android:id="@+id/tv_result_extra"
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,28 +26,40 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/linearLayout" />
 
-    <Button
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Нет"
-        android:id="@+id/btn_negative"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/tv_result_extra"
-        android:layout_alignEnd="@+id/tv_result_extra" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Да"
-        android:id="@+id/btn_positive"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/btn_negative"
-        android:layout_toEndOf="@+id/btn_negative"
         android:layout_alignRight="@+id/tv_question"
-        android:layout_alignEnd="@+id/tv_question" />
+        android:layout_alignEnd="@+id/tv_question"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:text="Нет"
+            android:id="@+id/btn_negative"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0.5" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:text="Да"
+            android:id="@+id/btn_positive"
+            android:layout_toEndOf="@+id/btn_negative"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="0.5" />
+    </LinearLayout>
 
 </RelativeLayout>

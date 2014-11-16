@@ -1,6 +1,7 @@
 package nesterenya.com.psychologicaltests;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,7 +14,7 @@ public class TestActivity extends Activity {
 
     private TextView questionTV;
 
-    private String[] questions = {
+    private String[] questionsA = {
             "1. Часто ли Вы испытываете тягу к новым впечатлениям, к тому чтобы отвлечься, испытать сильные ощущения?",
             "2. Часто ли вы чувствуете, что нуждаетесь в друзьях, которые могут вас понять, одобрить или посочувствовать?",
             "3. Считаете ли вы себя беззаботным человеком?",
@@ -133,17 +134,72 @@ public class TestActivity extends Activity {
             "57. Часто ли у вас \"сосет под ложечкой\" перед важным делом?"
     };
 
+    private final static int COUNT_QUESTIONS=57;
+    private boolean[] answers = new boolean[COUNT_QUESTIONS];
     private int activeQuestion = 0;
     //TODO сделать возможность поделиться вконтакте
     private void putAnswer(int answer) {
+        if(answer==1) {answers[activeQuestion]=true;}
 
-        //TODO обработка ответа
         activeQuestion++;
-        if(activeQuestion<questions.length) {
-            questionTV.setText(questions[activeQuestion]);
+        if(activeQuestion<questionsA.length) {
+            questionTV.setText(questionsA[activeQuestion]);
         } else {
+            sendResult();
             finish();
         }
+    }
+
+    //TODO пока в спешке так, улучшить и написать unit тест (и вообще вынести в отдельный класс логику теста)
+    //TODO и сделать обций интерфейс для разных тестов
+    // Здесь номера вопросов (не индекс в массива);
+    // За каждое совпадение сключем +1 в соответствующую шкалу
+    private int[] extrasYes = {1,3,8,10,13,17,22,25,27,39,44,46,49,53,56};
+    private int[] extrasNo = {5,15,20,29,32,34,37,41,51};
+    private int[] emotionYes = {2,4,7,9,11,14,16,19,21,23,26,28,31,33,35,38,40,43,45,47,50,52,55,57};
+    private int[] lieYes = {6,24,36};
+    private int[] lieNo = {12,18,30,42,48,54};
+
+    private void sendResult() {
+        int extra = 0;
+        for(int nubmerQuestion : extrasYes) {
+            if(answers[nubmerQuestion-1]==true) {
+                extra++;
+            }
+        }
+        for(int nubmerQuestion : extrasNo) {
+            if(answers[nubmerQuestion-1]==false) {
+                extra++;
+            }
+        }
+
+        int emotion = 0;
+        for(int nubmerQuestion : emotionYes) {
+            if(answers[nubmerQuestion-1]==true) {
+                emotion++;
+            }
+        }
+
+        int lie = 0;
+        for(int nubmerQuestion : lieYes) {
+            if(answers[nubmerQuestion-1]==true) {
+                lie++;
+            }
+        }
+
+        for(int nubmerQuestion : lieNo) {
+            if(answers[nubmerQuestion-1]==false) {
+                lie++;
+            }
+        }
+
+        Intent intent = new Intent(TestActivity.this, ResultActivity.class);
+
+        intent.putExtra("extra", extra);
+        intent.putExtra("emotion",emotion);
+        intent.putExtra("lie",lie);
+
+        startActivity(intent);
     }
 
     @Override
@@ -152,7 +208,7 @@ public class TestActivity extends Activity {
         setContentView(R.layout.activity_test);
 
         questionTV = (TextView)findViewById(R.id.tv_question);
-        questionTV.setText(questions[activeQuestion]);
+        questionTV.setText(questionsA[activeQuestion]);
 
         Button btnPositive = (Button)findViewById(R.id.btn_positive);
         Button btnNegative = (Button)findViewById(R.id.btn_negative);
