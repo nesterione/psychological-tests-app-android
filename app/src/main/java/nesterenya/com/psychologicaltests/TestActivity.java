@@ -8,7 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 
 import nesterenya.com.psychologicaltests.views.AizenText;
 
@@ -41,6 +46,7 @@ public class TestActivity extends Activity {
     }
 
     private AizenText test;
+    private AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +78,27 @@ public class TestActivity extends Activity {
                 putAnswer(0);
             }
         });
+
+
+
+
+        // Создание экземпляра adView.
+        adView = new AdView(this);
+        adView.setAdUnitId(getResources().getString(R.string.banner_ad_unit_id));
+        adView.setAdSize(AdSize.BANNER);
+
+        // Поиск разметки LinearLayout (предполагается, что ей был присвоен
+        // атрибут android:id="@+id/mainLayout").
+        LinearLayout layout = (LinearLayout)findViewById(R.id.layout_banner);
+
+        // Добавление в разметку экземпляра adView.
+        layout.addView(adView);
+
+        // Инициирование общего запроса.
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Загрузка adView с объявлением.
+        adView.loadAd(adRequest);
     }
 
     @Override

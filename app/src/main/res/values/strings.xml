@@ -4,11 +4,11 @@
     <string name="app_name">Psychological Tests</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_about_test">AboutTestActivity</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_tempers">TempersActivity</string>
-    <string name="title_activity_info">InfoActivity</string>
-    <string name="title_activity_pre_test">PreTestActivity</string>
-    <string name="title_activity_result">ResultActivity</string>
-
+    <string name="title_activity_about_test">О тесте</string>
+    <string name="title_activity_test">Тест</string>
+    <string name="title_activity_tempers">Темпераменты</string>
+    <string name="title_activity_info">Информация</string>
+    <string name="title_activity_pre_test">Готовы?</string>
+    <string name="title_activity_result">Результат</string>
+    <string name="banner_ad_unit_id">CODE HIRE</string>
 </resources>
