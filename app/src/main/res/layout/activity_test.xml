@@ -9,7 +9,7 @@
     tools:context="nesterenya.com.psychologicaltests.TestActivity">
 
     <TextView
-        android:text="Отвечайте на ворпросы:"
+        android:text="Отвечайте на вопросы:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_result_extra"

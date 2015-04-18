@@ -17,3 +17,4 @@ hs_err_pid*
 /.idea/libraries
 .DS_Store
 /build
+code.txt
